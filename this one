@@ -1,0 +1,23 @@
+DATA smo_cardio ;
+
+INPUT exposed $ disease $ patients ;
+
+DATALINES ;
+
+exposed disease 50
+
+exposed none    50
+
+not_exp disease 25
+
+not_exp none    75 
+
+;
+
+PROC FREQ DATA = smo_cardio ;
+
+TABLES exposed*disease / RELRISK RISKDIFF ;
+
+WEIGHT patients ;
+
+RUN ;
